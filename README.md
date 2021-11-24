@@ -63,3 +63,5 @@ You are required to submit the following:
 * The URL to the deployed application
 
 * The URL to the GitHub repository
+
+deployed app on heroku: https://thawing-garden-03365.herokuapp.com/
