@@ -18,7 +18,6 @@ router.get('/api/workouts', (req, res) => {
     })
 });
 
-
 router.get('/api/workouts/range', (req, res) => {
   db.Workout.aggregate([
     {
@@ -38,7 +37,6 @@ router.get('/api/workouts/range', (req, res) => {
       res.json(err);
     })
 });
-
 
 router.post('/api/workouts', ({ body }, res) => {
   db.Workout.create(body)
