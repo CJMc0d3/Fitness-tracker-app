@@ -17,24 +17,15 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
   useFindAndModify: false,
 });
 
-const {MongoClient } = require('mongodb');
 
-async function main() {
-  const uri = "mongodb+srv://root:<password>@cluster0.bmhyi.mongodb.net/workout?retryWrites=true&w=majority";
-
-  const client = MongoClient(uri);
-
-  try {
-    await client.connect();
-  } catch (e) {
-    console.error(e);
-  } finally {
-    await client.close();
-  }
-}
-
-main().catch(console.error);
-
+const { MongoClient } = require('mongodb');
+const uri = "mongodb+srv://root:<password>@cluster0.bmhyi.mongodb.net/workout?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+client.connect(err => {
+  const collection = client.db("test").collection("devices");
+  // perform actions on the collection object
+  client.close();
+});
 app.use(require("./routes/api.js"));
 app.use(require("./routes/html.js"));
 
